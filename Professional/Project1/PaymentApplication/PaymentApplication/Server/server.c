@@ -19,16 +19,16 @@ ST_transaction_t transactionDB[255] = { 0 }; //intialized with 0s
 EN_transState_t recieveTransactionData(ST_transaction_t* transData)
 {
 	ST_accountsDB_t *accountRefrence = NULL ;
-	if (isValidAccount(&transData->cardHolderData, &accountRefrence) == ACCOUNT_NOT_FOUND)
+	if (isValidAccount(&transData->cardHolderData, &accountRefrence) == ACCOUNT_NOT_FOUND) //check if account is not in the data base 
 	{
-		transData->transState = FRAUD_CARD;
+		transData->transState = FRAUD_CARD;  //put the state of the transaction
 		if (saveTransaction(transData) != SAVING_FAILED)
 		{
 			printf("Fruad Card:::This acount is not in the data base\n");
 			return FRAUD_CARD;
 		}
 	}
-	if (isBlockedAccount(accountRefrence) == BLOCKED_ACCOUNT)
+	if (isBlockedAccount(accountRefrence) == BLOCKED_ACCOUNT)		//check if the account is blocked
 	{
 		transData->transState = DECLINED_STOLEN_CARD;
 		if (saveTransaction(transData) != SAVING_FAILED)
@@ -38,7 +38,8 @@ EN_transState_t recieveTransactionData(ST_transaction_t* transData)
 		}
 	}
 	
-	if (isAmountAvailable(&transData->terminalData,accountRefrence) == LOW_BALANCE)
+	//check if the amount needed by the user not available in his balance
+	if (isAmountAvailable(&transData->terminalData,accountRefrence) == LOW_BALANCE)		
 	{
 		transData->transState = DECLINED_INSUFFECIENT_FUND;
 		if (saveTransaction(transData) != SAVING_FAILED)
@@ -47,13 +48,13 @@ EN_transState_t recieveTransactionData(ST_transaction_t* transData)
 			return DECLINED_INSUFFECIENT_FUND;
 		}
 	}
-	
+	//saving the transaction and also check if the saving function did its work
 	if (saveTransaction(transData) == SAVING_FAILED)
 	{
 		return INTERNAL_SERVER_ERROR;
 	}
 	
-	accountRefrence->balance -= transData->terminalData.transAmount;
+	accountRefrence->balance -= transData->terminalData.transAmount; //updatting the balance in account data base
 	printf("\n-------Transaction Done Account Updated-------\n");
 	printf("New balance = %.1f", accountRefrence->balance);
 	return APPROVED;
@@ -65,13 +66,14 @@ EN_serverError_t isValidAccount(ST_cardData_t* cardData, ST_accountsDB_t** accou
 	uint8_t search, counter;
 	for (counter = 0; counter < 255; counter++)
 	{
+		//if search = 0 then the account is found in the data base
 		search = strcmp(cardData->primaryAccountNumber, accountsDB[counter].primaryAccountNumber);
 		if (search == 0)
 			break;
 	}
 	if (search == 0)
 	{
-		*accountRefrence = &accountsDB[counter];
+		*accountRefrence = &accountsDB[counter]; //putting the address of the account in the accountrefrence 
 		return SERVER_OK;
 	}
 	else
@@ -85,7 +87,7 @@ EN_serverError_t isBlockedAccount(ST_accountsDB_t* accountRefrence)
 {
 	if (accountRefrence->state == RUNNING)
 	{
-		printf("\nthis Account is running \n");
+		printf("this Account is running \n");
 		return SERVER_OK;
 	}
 	else
@@ -111,8 +113,11 @@ EN_serverError_t isAmountAvailable(ST_terminalData_t* termData, ST_accountsDB_t*
 
 EN_serverError_t saveTransaction(ST_transaction_t* transData)
 {
+	//static so it keeps its value when the funcion end
 	static uint32_t transactionNum = 0;
 	transData->transactionSequenceNumber = transactionNum+1;
+	//if transactionNum >= 255 then the transaction data base is full
+	//and the funcion wont work
 	if (transactionNum < 255)
 	{
 		transactionDB[transactionNum].cardHolderData = transData->cardHolderData;
@@ -141,6 +146,8 @@ EN_serverError_t saveTransaction(ST_transaction_t* transData)
 void listSavedTransactions(void)
 {
 	uint8_t counter = 0;
+	//cheching if the first transaction has a seqNum
+	//if it didnt then no transaction done before
 	if (transactionDB[counter].transactionSequenceNumber > 0)
 	{
 		while (transactionDB[counter].transactionSequenceNumber >= counter)
@@ -314,6 +321,7 @@ void recieveTransactionDataTest(void)
 	}
 
 }
+//////////////////////////////////////
 
 
 void isValidAccountTest(void)
@@ -347,6 +355,45 @@ void isValidAccountTest(void)
 	if (output == ACCOUNT_NOT_FOUND)
 		printf("Account not found");
 }
+//////////////////////////////
+
+void isBlockedAccountTest(void)
+{
+	ST_accountsDB_t accountRefrence;
+	accountRefrence.state = RUNNING;
+
+	printf("\nTester name: Mohanad Magdy \n");
+	printf("Function Name: isBlockedAccount \n");
+	printf("\nTest Case 1: \n");
+	printf("Input Data: Running Account\n");
+	printf("Expected Result: This account is running\n");
+	printf("Actual Result: ");
+	if (isBlockedAccount(&accountRefrence) == SERVER_OK)
+	{
+		printf("This account is running\n");
+	}
+	else
+	{
+		printf("This account is blocked\n");
+	}
+
+	accountRefrence.state = BLOCKED;
+
+	printf("\nTest Case 2: \n");
+	printf("Input Data: Blocked Account\n");
+	printf("Expected Result: This account is blocked\n");
+	printf("Actual Result: ");
+	if (isBlockedAccount(&accountRefrence) == SERVER_OK)
+	{
+		printf("This account is running\n");
+	}
+	else
+	{
+		printf("This account is blocked\n");
+	}
+
+}
+
 
 void isAmountAvailableTest(void)
 {

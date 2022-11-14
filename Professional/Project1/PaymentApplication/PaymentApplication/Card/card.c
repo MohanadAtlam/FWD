@@ -12,10 +12,12 @@ EN_cardError_t getCardHolderName(ST_cardData_t* cardData)
 	printf("\nPlease Enter the card holder name : ");
 	gets(cardData->cardHolderName);
 	uint8_t counter = 0;
+	//while loop to get the string length     ==== same to all funcitons in this module
 	while (cardData->cardHolderName[counter] != 0)
 	{
 		counter++;
 	}
+	//check if the name is less than 20 elements or its 0 or more than 24 elements  
 	if (counter < 20 || cardData->cardHolderName[0] == 0 || counter > 24)
 	{
 		printf("\nWrong Name entered\n");

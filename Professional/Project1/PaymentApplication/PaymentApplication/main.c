@@ -16,7 +16,14 @@
 
 int main()
 {
-	appStart();
+	//appStart();
+
+	//recieveTransactionDataTest();
+	//isValidAccountTest();
+	//isBlockedAccountTest();
+	//isAmountAvailableTest();
+	//saveTransactionTest();
+	//listSavedTransactionsTest();
 
 	return 0;
 }

@@ -43,6 +43,7 @@ void listSavedTransactions(void);
 
 void recieveTransactionDataTest(void);
 void isValidAccountTest(void);
+void isBlockedAccountTest(void);
 void isAmountAvailableTest(void);
 void saveTransactionTest(void);
 void listSavedTransactionsTest(void);

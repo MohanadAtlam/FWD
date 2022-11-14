@@ -1,2 +1,5 @@
 ﻿  server.c
+  main.c
+E:\Courses\FWD_EmbeddedSystems\Professional\FWD_Projects\C_Project\PaymentApplication\PaymentApplication\main.c(21,2): warning C4013: 'isBlockedAccountTest' undefined; assuming extern returning int
+  Generating Code...
   PaymentApplication.vcxproj -> E:\Courses\FWD_EmbeddedSystems\Professional\FWD_Projects\C_Project\PaymentApplication\x64\Debug\PaymentApplication.exe

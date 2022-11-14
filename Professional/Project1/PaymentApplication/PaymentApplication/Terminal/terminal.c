@@ -35,6 +35,7 @@ EN_terminalError_t isCardExpired(ST_cardData_t* cardData, ST_terminalData_t* ter
 	uint8_t transaction_month = atoi(&(termData->transactionDate[3]));
 	uint8_t transaction_year = atoi(&(termData->transactionDate[6]))-2000;
 
+	//if the card EXP year is bigger no need to check the month 
 	if (transaction_year < card_EXPyear)
 	{
 		printf("Card is still available\n");
