@@ -4,6 +4,7 @@
 
 #include<stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include"STD_TYPES_FWD.h"
 #include"../Card/card.h"
@@ -17,6 +18,11 @@ EN_terminalError_t getTransactionDate(ST_terminalData_t* termData)
 	uint8_t counter = 0;
 	while (termData->transactionDate[counter] != 0)
 	{
+		if ((termData->transactionDate[counter] < '0' || termData->transactionDate[counter]>'9') && termData->transactionDate[counter] != '/')
+		{
+			printf("--> date you enter must contain only numbers and be in the form of DD/MM/YYYY\n");
+			return WRONG_DATE;
+		}
 		counter++;
 	}
 	if (counter != 10 || termData->transactionDate[0] == 0)

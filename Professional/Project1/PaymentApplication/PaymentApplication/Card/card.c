@@ -84,11 +84,13 @@ EN_cardError_t getCardPAN(ST_cardData_t* cardData)
 	uint8_t counter = 0;
 	while (cardData->primaryAccountNumber[counter] != 0)
 	{
-		if (cardData->cardExpirationDate[counter] < '0' || cardData->cardExpirationDate[counter]>'9')
+		
+		if (cardData->primaryAccountNumber[counter] < '0' || cardData->primaryAccountNumber[counter]>'9')
 		{
 			printf("--> PAN you enter must contain only numbers\n");
 			return WRONG_PAN;
 		}
+		
 		counter++;
 	}
 	if (counter <16 || cardData->primaryAccountNumber[0] == 0 || counter >19)
