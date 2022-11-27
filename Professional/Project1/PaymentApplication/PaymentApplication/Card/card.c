@@ -108,6 +108,7 @@ EN_cardError_t getCardPAN(ST_cardData_t* cardData)
 
 void getCardHolderNameTest(void)
 {
+	ST_cardData_t cardData;
 	printf("\nTester name: Mohanad Magdy \n");
 	printf("Function Name: getCardHolderName \n");
 	printf("Test Case 1: right input data\n");
@@ -115,75 +116,69 @@ void getCardHolderNameTest(void)
 	printf("Expected Result: Valid Name entered\n");
 	printf("Actual Result: ");
 
-	uint8_t name1[24] = "mohanad magdy mohamad";
-	uint8_t name2[24] = "mohanad";
-	uint8_t name3[24] = { 0 };
-	uint8_t name4[] = "mohanad magdy mohamad fahmy ahmed";
-	uint8_t counter = 0;
-	while (name1[counter] != 0)
-	{
-		counter++;
-	}
-	if (counter < 20 || name1[0] == 0 || counter > 24)
-	{
-		printf("Wrong Name entered\n");
-	}
-	else
+	if (getCardHolderName(&cardData) == CARD_OK)
 	{
 		printf("Valid Name entered\n");
 	}
+	else
+	{
+		printf("Wrong Name entered\n");
+	}
+
 	printf("\nTest Case 2: too short input data\n");
 	printf("Input Data: mohanad \n");
 	printf("Expected Result: Wrong Name entered\n");
 	printf("Actual Result: ");
-	counter = 0;
-	while (name2[counter] != 0)
+
+	if (getCardHolderName(&cardData) == CARD_OK)
 	{
-		counter++;
-	}
-	if (counter < 20 || name2[0] == 0 || counter > 24)
-	{
-		printf("Wrong Name entered\n");
+		printf("Valid Name entered\n");
 	}
 	else
 	{
-		printf("Valid Name entered\n");
+		printf("Wrong Name entered\n");
 	}
 
 	printf("\nTest Case 3: 0 as an input data\n");
 	printf("Input Data: 0 \n");
 	printf("Expected Result: Wrong Name entered\n");
 	printf("Actual Result: ");
-	counter = 0;
-	while (name3[counter] != 0)
+
+	if (getCardHolderName(&cardData) == CARD_OK)
 	{
-		counter++;
-	}
-	if (counter < 20 || name3[0] == 0 || counter > 24)
-	{
-		printf("Wrong Name entered\n");
+		printf("Valid Name entered\n");
 	}
 	else
 	{
-		printf("Valid Name entered\n");
+		printf("Wrong Name entered\n");
 	}
 
 	printf("\nTest Case 4: too long input data\n");
 	printf("Input Data: mohanad magdy mohamad fahmy ahmed \n");
 	printf("Expected Result: Wrong Name entered\n");
 	printf("Actual Result: ");
-	counter = 0;
-	while (name4[counter] != 0)
+
+	if (getCardHolderName(&cardData) == CARD_OK)
 	{
-		counter++;
-	}
-	if (counter < 20 || name4[0] == 0 || counter > 24)
-	{
-		printf("Wrong Name entered\n");
+		printf("Valid Name entered\n");
 	}
 	else
 	{
+		printf("Wrong Name entered\n");
+	}
+
+	printf("\nTest Case 5: letters and numbers data\n");
+	printf("Input Data: mohanad magdy mohama4 \n");
+	printf("Expected Result: Wrong Name entered\n");
+	printf("Actual Result: ");
+
+	if (getCardHolderName(&cardData) == CARD_OK)
+	{
 		printf("Valid Name entered\n");
+	}
+	else
+	{
+		printf("Wrong Name entered\n");
 	}
 }
 
@@ -191,67 +186,51 @@ void getCardHolderNameTest(void)
 
 void getCardExpiryDateTest(void)
 {
+	ST_cardData_t cardData;
+
 	printf("\nTester name: Mohanad Magdy \n");
 	printf("Function Name: getCardExpiryDate \n");
 	printf("Test Case 1: right input data\n");
 	printf("Input Data: 12/22\n");
 	printf("Expected Result: Valid EXP Date\n");
-	printf("Actual Result: ");
+	printf("Actual Result: \n");
 
-	uint8_t date1[6] = "12/22";
-	uint8_t date2[6] = "122";
-	uint8_t date3[6] = { 0 };
-	uint8_t date4[] = "122/122";
-
-	uint8_t counter = 0;
-	while (date1[counter] != 0)
+	if (getCardExpiryDate(&cardData) == CARD_OK)
 	{
-		counter++;
-	}
-	if (counter != 5 || date1[0] == 0)
-	{
-		printf("Wrong EXP Date\n");
+		printf("\nValid EXP Date\n");
 	}
 	else
 	{
-		printf("Valid EXP Date\n");
+		printf("\nWrong EXP Date\n");
 	}
+
 	printf("\nTest Case 2: too shore input data\n");
 	printf("Input Data: 122\n");
 	printf("Expected Result: Wrong EXP Date\n");
 	printf("Actual Result: ");
 
-	counter = 0;
-	while (date2[counter] != 0)
+	if (getCardExpiryDate(&cardData) == CARD_OK)
 	{
-		counter++;
-	}
-	if (counter != 5 || date2[0] == 0)
-	{
-		printf("Wrong EXP Date\n");
+		printf("\nValid EXP Date\n");
 	}
 	else
 	{
-		printf("Valid EXP Date\n");
+		printf("\nWrong EXP Date\n");
 	}
+
 
 	printf("\nTest Case 3: 0 input data \n");
 	printf("Input Data: 0\n");
 	printf("Expected Result: Wrong EXP Date\n");
 	printf("Actual Result: ");
 
-	counter = 0;
-	while (date3[counter] != 0)
+	if (getCardExpiryDate(&cardData) == CARD_OK)
 	{
-		counter++;
-	}
-	if (counter != 5 || date3[0] == 0)
-	{
-		printf("Wrong EXP Date\n");
+		printf("\nValid EXP Date\n");
 	}
 	else
 	{
-		printf("Valid EXP Date\n");
+		printf("\nWrong EXP Date\n");
 	}
 
 	printf("\nTest Case 4: too long input data \n");
@@ -259,24 +238,50 @@ void getCardExpiryDateTest(void)
 	printf("Expected Result: Wrong EXP Date\n");
 	printf("Actual Result: ");
 
-	counter = 0;
-	while (date4[counter] != 0)
+	if (getCardExpiryDate(&cardData) == CARD_OK)
 	{
-		counter++;
-	}
-	if (counter != 5 || date4[0] == 0)
-	{
-		printf("Wrong EXP Date\n");
+		printf("\nValid EXP Date\n");
 	}
 	else
 	{
-		printf("Valid EXP Date\n");
+		printf("\nWrong EXP Date\n");
 	}
+
+	printf("\nTest Case 5: data has letters in it \n");
+	printf("Input Data: dd/20\n");
+	printf("Expected Result: Wrong EXP Date\n");
+	printf("Actual Result: ");
+
+	if (getCardExpiryDate(&cardData) == CARD_OK)
+	{
+		printf("\nValid EXP Date\n");
+	}
+	else
+	{
+		printf("\nWrong EXP Date\n");
+	}
+
+	printf("\nTest Case 6: invalid data form \n");
+	printf("Input Data: 12-22\n");
+	printf("Expected Result: Wrong EXP Date\n");
+	printf("Actual Result: ");
+
+	if (getCardExpiryDate(&cardData) == CARD_OK)
+	{
+		printf("\nValid EXP Date\n");
+	}
+	else
+	{
+		printf("\nWrong EXP Date\n");
+	}
+
 }
 
 
 void getCardPANTest(void)
 {
+	ST_cardData_t cardData;
+
 	printf("\nTester name: Mohanad Magdy \n");
 	printf("Function Name: getCardExpiryDate \n");
 	printf("Test Case 1: right input data\n");
@@ -284,76 +289,68 @@ void getCardPANTest(void)
 	printf("Expected Result: Valid pan enterd\n");
 	printf("Actual Result: ");
 
-	uint8_t pan1[] = "1234567812345678";
-	uint8_t pan2[] = "123";
-	uint8_t pan3[] = { 0 };
-	uint8_t pan4[] = "123456789123456789123456789";
-
-	uint8_t counter = 0;
-	while (pan1[counter] != 0)
+	if (getCardPAN(&cardData) == CARD_OK)
 	{
-		counter++;
-	}
-	if (counter < 16 || pan1[0] == 0 || counter >19)
-	{
-		printf("Wrong pan entered\n");
+		printf("\nValid pan enterd\n");
 	}
 	else
 	{
-		printf("Valid pan enterd\n");
+		printf("\nWrong pan entered\n");
 	}
 
 	printf("\nTest Case 2: too short input data\n");
 	printf("Input Data: 123\n");
 	printf("Expected Result: Wrong pan entered\n");
 	printf("Actual Result: ");
-	counter = 0;
-	while (pan2[counter] != 0)
+
+	if (getCardPAN(&cardData) == CARD_OK)
 	{
-		counter++;
-	}
-	if (counter < 16 || pan2[0] == 0 || counter >19)
-	{
-		printf("Wrong pan entered\n");
+		printf("\nValid pan enterd\n");
 	}
 	else
 	{
-		printf("Valid pan enterd\n");
+		printf("\nWrong pan entered\n");
 	}
 
 	printf("\nTest Case 3: 0 as an input data\n");
 	printf("Input Data: 0\n");
 	printf("Expected Result: Wrong pan entered\n");
 	printf("Actual Result: ");
-	counter = 0;
-	while (pan3[counter] != 0)
+
+	if (getCardPAN(&cardData) == CARD_OK)
 	{
-		counter++;
-	}
-	if (counter < 16 || pan3[0] == 0 || counter >19)
-	{
-		printf("Wrong pan entered\n");
+		printf("\nValid pan enterd\n");
 	}
 	else
 	{
-		printf("Valid pan enterd\n");
+		printf("\nWrong pan entered\n");
 	}
 
 	printf("\nTest Case 4: too long input data\n");
 	printf("Input Data: 123456789123456789123456789\n");
 	printf("Expected Result: Wrong pan entered\n");
 	printf("Actual Result: ");
-	counter = 0;
-	while (pan4[counter] != 0)
+
+	if (getCardPAN(&cardData) == CARD_OK)
 	{
-		counter++;
-	}
-	if (counter < 16 || pan4[0] == 0 || counter >19)
-	{
-		printf("Wrong pan entered\n");
+		printf("\nValid pan enterd\n");
 	}
 	else
 	{
-		printf("Valid pan enterd\n");
+		printf("\nWrong pan entered\n");
+	}
+
+	printf("\nTest Case 5: data with letters in it\n");
+	printf("Input Data: a2345678912345678\n");
+	printf("Expected Result: Wrong pan entered\n");
+	printf("Actual Result: ");
+
+	if (getCardPAN(&cardData) == CARD_OK)
+	{
+		printf("\nValid pan enterd\n");
+	}
+	else
+	{
+		printf("\nWrong pan entered\n");
 	}
 }
