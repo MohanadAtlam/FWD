@@ -283,7 +283,7 @@ void getCardPANTest(void)
 	ST_cardData_t cardData;
 
 	printf("\nTester name: Mohanad Magdy \n");
-	printf("Function Name: getCardExpiryDate \n");
+	printf("Function Name: getCardPAN \n");
 	printf("Test Case 1: right input data\n");
 	printf("Input Data: 1234567812345678\n");
 	printf("Expected Result: Valid pan enterd\n");
