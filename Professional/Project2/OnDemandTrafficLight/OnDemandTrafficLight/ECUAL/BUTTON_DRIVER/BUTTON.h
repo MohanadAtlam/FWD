@@ -9,6 +9,10 @@
 #ifndef BUTTON_H_
 #define BUTTON_H_
 
+
+#include "../../MCAL/DIO_DRIVER/DIO_interface.h"
+#include "../../MCAL/EXTI_DRIVER/EXTI_interface.h"
+
 typedef enum EN_BUTTONError_t
 {
 	BUTTON_OK, BUTTON_INIT_ERROR, BUTTON_READ_ERROR

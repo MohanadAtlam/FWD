@@ -9,6 +9,12 @@
 #ifndef APP_H_
 #define APP_H_
 
+#include "NORMAL_MODE/NORMAL_MODE.h"
+#include "PEDESTRIAN_MODE/PEDESTRIAN_MODE.h"
+
+
+#include "../ECUAL/BUTTON_DRIVER/BUTTON.h"
+
 #define INT_BUTTON_PORT			3
 #define INT0_PIN				2
 

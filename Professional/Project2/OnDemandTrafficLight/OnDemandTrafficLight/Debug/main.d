@@ -1,8 +1,34 @@
 main.d main.o: .././main.c .././APP/STD_Types.h .././APP/BIT_MATH.h \
- .././APP/APP.h
+ .././APP/APP.h .././APP/NORMAL_MODE/NORMAL_MODE.h \
+ .././APP/NORMAL_MODE/../../ECUAL/LED_DRIVER/LED.h \
+ .././APP/NORMAL_MODE/../../ECUAL/LED_DRIVER/../../MCAL/DIO_DRIVER/DIO_interface.h \
+ .././APP/NORMAL_MODE/../../ECUAL/LED_DRIVER/../../MCAL/TIMER_DELAY/timer_interface.h \
+ .././APP/PEDESTRIAN_MODE/PEDESTRIAN_MODE.h \
+ .././APP/PEDESTRIAN_MODE/../../ECUAL/LED_DRIVER/LED.h \
+ .././APP/../ECUAL/BUTTON_DRIVER/BUTTON.h \
+ .././APP/../ECUAL/BUTTON_DRIVER/../../MCAL/DIO_DRIVER/DIO_interface.h \
+ .././APP/../ECUAL/BUTTON_DRIVER/../../MCAL/EXTI_DRIVER/EXTI_interface.h
 
 .././APP/STD_Types.h:
 
 .././APP/BIT_MATH.h:
 
 .././APP/APP.h:
+
+.././APP/NORMAL_MODE/NORMAL_MODE.h:
+
+.././APP/NORMAL_MODE/../../ECUAL/LED_DRIVER/LED.h:
+
+.././APP/NORMAL_MODE/../../ECUAL/LED_DRIVER/../../MCAL/DIO_DRIVER/DIO_interface.h:
+
+.././APP/NORMAL_MODE/../../ECUAL/LED_DRIVER/../../MCAL/TIMER_DELAY/timer_interface.h:
+
+.././APP/PEDESTRIAN_MODE/PEDESTRIAN_MODE.h:
+
+.././APP/PEDESTRIAN_MODE/../../ECUAL/LED_DRIVER/LED.h:
+
+.././APP/../ECUAL/BUTTON_DRIVER/BUTTON.h:
+
+.././APP/../ECUAL/BUTTON_DRIVER/../../MCAL/DIO_DRIVER/DIO_interface.h:
+
+.././APP/../ECUAL/BUTTON_DRIVER/../../MCAL/EXTI_DRIVER/EXTI_interface.h:

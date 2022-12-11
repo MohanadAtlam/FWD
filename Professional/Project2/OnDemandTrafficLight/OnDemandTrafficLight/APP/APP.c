@@ -9,12 +9,7 @@
 #include "STD_Types.h"
 #include "APP.h"
 
-#include "NORMAL_MODE/NORMAL_MODE.h"
-#include "PEDESTRIAN_MODE/PEDESTRIAN_MODE.h"
 
-
-#include "../MCAL/EXTI_DRIVER/EXTI_interface.h"
-#include "../ECUAL/BUTTON_DRIVER/BUTTON.h"
 
 void APP(void)
 {

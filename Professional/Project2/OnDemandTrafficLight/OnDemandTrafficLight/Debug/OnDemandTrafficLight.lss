@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000ae1  00000000  00000000  00002ab5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000fd4  00000000  00000000  00003596  2**0
+  8 .debug_line   00001033  00000000  00000000  00003596  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000348  00000000  00000000  0000456c  2**2
+  9 .debug_frame  00000348  00000000  00000000  000045cc  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000007b0  00000000  00000000  000048b4  2**0
+ 10 .debug_str    000007b0  00000000  00000000  00004914  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000b48  00000000  00000000  00005064  2**0
+ 11 .debug_loc    00000b48  00000000  00000000  000050c4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000110  00000000  00000000  00005bac  2**0
+ 12 .debug_ranges 00000110  00000000  00000000  00005c0c  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -83,8 +83,8 @@ Disassembly of section .text:
   78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 0000007c <APP>:
-#include "../MCAL/EXTI_DRIVER/EXTI_interface.h"
-#include "../ECUAL/BUTTON_DRIVER/BUTTON.h"
+
+
 
 void APP(void)
 {
@@ -113,7 +113,7 @@ void APP(void)
   a0:	08 95       	ret
 
 000000a2 <NORMAL_MODE>:
-#include "../../MCAL/TIMER_DELAY/timer_interface.h"
+
 
 #include "NORMAL_MODE.h"
 
@@ -711,7 +711,7 @@ PED_MODES_Error mode2(void)
  422:	08 95       	ret
 
 00000424 <PEDESTRIAN_MODE>:
-#include "../../MCAL/DIO_DRIVER/DIO_interface.h"
+
 
 #include "PEDESTRIAN_MODE.h"
 
@@ -799,7 +799,7 @@ void PEDESTRIAN_MODE(void)
  4aa:	08 95       	ret
 
 000004ac <BUTTON_INIT>:
-#include "../../MCAL/DIO_DRIVER/DIO_interface.h"
+
 #include "BUTTON.h"
 
 
@@ -858,7 +858,7 @@ EN_BUTTONError_t BUTTON_INIT(u8 BUTTON_PORT, u8 BUTTON_PIN, u8 BUTTON_INIT_STATE
 
 EN_LEDError_t LED_INIT(u8 LED_PORT, u8 LED_PIN)
 {
-	//initializing the led pin as an input pin 
+	//initializing the led pin as an output pin 
 	if (DIO_INIT(LED_PORT,LED_PIN,OUTPUT)==DIO_OK)
  4e0:	41 e0       	ldi	r20, 0x01	; 1
  4e2:	0e 94 c7 02 	call	0x58e	; 0x58e <DIO_INIT>

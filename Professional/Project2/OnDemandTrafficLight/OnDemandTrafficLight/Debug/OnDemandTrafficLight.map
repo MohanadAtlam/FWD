@@ -654,18 +654,18 @@ END GROUP
  .debug_abbrev  0x0000095c       0xf8 MCAL/EXTI_DRIVER/EXTI.o
  .debug_abbrev  0x00000a54       0x8d MCAL/TIMER_DELAY/timer.o
 
-.debug_line     0x00000000      0xfd4
+.debug_line     0x00000000     0x1033
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_line    0x00000116       0xd3 APP/APP.o
- .debug_line    0x000001e9      0x13e APP/NORMAL_MODE/NORMAL_MODE.o
- .debug_line    0x00000327      0x3c6 APP/PEDESTRIAN_MODE/PEDESTRIAN_MODE.o
- .debug_line    0x000006ed       0xe8 ECUAL/BUTTON_DRIVER/BUTTON.o
- .debug_line    0x000007d5      0x19b ECUAL/LED_DRIVER/LED.o
- .debug_line    0x00000970       0x57 main.o
- .debug_line    0x000009c7      0x327 MCAL/DIO_DRIVER/DIO.o
- .debug_line    0x00000cee      0x12f MCAL/EXTI_DRIVER/EXTI.o
- .debug_line    0x00000e1d      0x1b7 MCAL/TIMER_DELAY/timer.o
+ .debug_line    0x00000116       0xed APP/APP.o
+ .debug_line    0x00000203      0x155 APP/NORMAL_MODE/NORMAL_MODE.o
+ .debug_line    0x00000358      0x3f4 APP/PEDESTRIAN_MODE/PEDESTRIAN_MODE.o
+ .debug_line    0x0000074c       0xe8 ECUAL/BUTTON_DRIVER/BUTTON.o
+ .debug_line    0x00000834      0x19b ECUAL/LED_DRIVER/LED.o
+ .debug_line    0x000009cf       0x57 main.o
+ .debug_line    0x00000a26      0x327 MCAL/DIO_DRIVER/DIO.o
+ .debug_line    0x00000d4d      0x12f MCAL/EXTI_DRIVER/EXTI.o
+ .debug_line    0x00000e7c      0x1b7 MCAL/TIMER_DELAY/timer.o
 
 .debug_frame    0x00000000      0x348
  *(.debug_frame)

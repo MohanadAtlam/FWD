@@ -8,7 +8,7 @@
 
 #ifndef PEDESTRIAN_MODE_H_
 #define PEDESTRIAN_MODE_H_
-
+#include "../../ECUAL/LED_DRIVER/LED.h"
 //defining the leds ports
 #define PEDESTRIAN_MODE_LEDS_PORT		1 //in the dio driver the ports are A->0	B->1	C-> 2		D->3
 

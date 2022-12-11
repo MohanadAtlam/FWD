@@ -7,14 +7,13 @@
 #include "STD_Types.h"
 #include "BIT_MATH.h"
 
-#include "../../MCAL/DIO_DRIVER/DIO_interface.h"
-#include "../../MCAL/TIMER_DELAY/timer_interface.h"
+
 
 #include "LED.h"
 
 EN_LEDError_t LED_INIT(u8 LED_PORT, u8 LED_PIN)
 {
-	//initializing the led pin as an input pin 
+	//initializing the led pin as an output pin 
 	if (DIO_INIT(LED_PORT,LED_PIN,OUTPUT)==DIO_OK)
 	{
 		return LED_OK;
