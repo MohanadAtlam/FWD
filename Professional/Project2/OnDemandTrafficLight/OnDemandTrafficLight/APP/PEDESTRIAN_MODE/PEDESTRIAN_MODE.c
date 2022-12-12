@@ -24,11 +24,21 @@ void PEDESTRIAN_MODE(void)
 			if (pin_Value_RED==1)
 			{
 				if (mode1()==PED_MODE_OK);
+				if(LED_ON(NORMAL_MODE_LEDS_PORT,RED_LED)==LED_OK);
 			}
 			//if the green or yellow led is on
 			else if (pin_Value_GREEN==1 || pin_Value_YELLOW==1)
 			{
-				if (mode2()==PED_MODE_OK);	
+				if (mode2()==PED_MODE_OK);
+				if (pin_Value_GREEN==1)
+				{
+					if(LED_ON(NORMAL_MODE_LEDS_PORT,GREEN_LED)==LED_OK);
+				} 
+				else
+				{
+					if(LED_ON(NORMAL_MODE_LEDS_PORT,YELLOW_LED)==LED_OK);
+				}
+					
 			}
 		}
 	} 
